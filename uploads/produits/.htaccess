@@ -1,0 +1,7 @@
+# Désactiver l'exécution de PHP dans ce dossier (sécurité)
+php_flag engine off
+
+<FilesMatch "\.ph(p[2-7]?|t|tml)$">
+    Order deny,allow
+    Deny from all
+</FilesMatch>

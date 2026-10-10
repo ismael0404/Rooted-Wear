@@ -1,0 +1,18 @@
+# Protéger les dossiers sensibles
+RewriteEngine On
+
+# Empêcher le listage des répertoires
+Options -Indexes
+
+# Bloquer l'accès direct aux dossiers techniques
+RewriteRule ^(config|includes|database)/ - [F,L]
+
+# Forcer l'encodage par défaut
+AddDefaultCharset UTF-8
+
+# En-têtes de sécurité
+<IfModule mod_headers.c>
+    Header set X-Content-Type-Options "nosniff"
+    Header set X-XSS-Protection "1; mode=block"
+    Header set X-Frame-Options "SAMEORIGIN"
+</IfModule>
